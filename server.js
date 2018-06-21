@@ -250,8 +250,9 @@ var nt = nThen(function (w) {
         wsConfig = { port: websocketPort};
     }
     var wsSrv = new WebSocketServer(wsConfig);
+    var HistoryKeeper = require('./history-keeper.js');
     Storage.create(config, function (store) {
-        NetfluxSrv.run(store, wsSrv, config, rpc);
+        NetfluxSrv.run(store, wsSrv, config, rpc, HistoryKeeper);
     });
 });
 
